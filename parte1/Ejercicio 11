@@ -1,0 +1,15 @@
+class Persona:
+    def __init__(self, nombre, edad):
+        self.nombre = nombre
+        self.edad = edad
+        
+    def mostrar_datos(self):
+        print(f'Nombre: {self.nombre}, Edad: {self.edad}')
+
+# Ejemplo de uso de la clase Persona
+if __name__ == "__main__":
+    # Crear una instancia de Persona
+    persona1 = Persona("Fabrizzio", 22)
+    
+    # Mostrar los datos de la persona1
+    persona1.mostrar_datos()
