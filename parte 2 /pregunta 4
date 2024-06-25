@@ -1,0 +1,116 @@
+class Tarea:
+    def __init__(self, descripcion):
+    
+        #Inicializa una nueva tarea con la descripción proporcionada y la marca como no completada.
+        
+        self.descripcion = descripcion
+        self.completada = False
+
+    def marcar_completada(self):
+        
+        #Marca la tarea como completada.
+        
+        self.completada = True
+
+    def __str__(self):
+        
+        #Devuelve una representación en cadena de la tarea, indicando si está completada o no.
+        
+        estado = "Hecha" if self.completada else "Pendiente"
+        return f"{self.descripcion} - {estado}"
+
+
+class GestorTareas:
+    def __init__(self):
+        
+        #Inicializa el gestor de tareas con una lista vacía de tareas.
+        
+        self.tareas = []
+
+    def agregar_tarea(self, descripcion):
+        
+        #Agrega una nueva tarea con la descripción proporcionada a la lista de tareas.
+        #Devuelve un mensaje de confirmación.
+    
+        tarea = Tarea(descripcion)
+        self.tareas.append(tarea)
+        return f"Tarea agregada con éxito: {descripcion}"
+
+    def eliminar_tarea(self, indice):
+        
+        #Elimina la tarea en el índice proporcionado de la lista de tareas.
+        #Devuelve un mensaje de confirmación si la operación es exitosa,
+        #o un mensaje de error si el índice es inválido.
+        
+        if 0 <= indice < len(self.tareas):
+            tarea_eliminada = self.tareas.pop(indice)
+            return f"Tarea eliminada con éxito: {tarea_eliminada.descripcion}"
+        else:
+            return "Índice de tarea inválido"
+
+    def marcar_tarea_completada(self, indice):
+        
+        #Marca la tarea en el índice proporcionado como completada.
+        #Devuelve un mensaje de confirmación si la operación es exitosa,
+        #o un mensaje de error si el índice es inválido.
+        
+        if 0 <= indice < len(self.tareas):
+            self.tareas[indice].marcar_completada()
+            return f"Tarea marcada como completada: {self.tareas[indice].descripcion}"
+        else:
+            return "Índice de tarea inválido"
+
+    def listar_tareas(self):
+        
+        #Devuelve una lista en cadena de todas las tareas y sus estados.
+        #Si no hay tareas, devuelve un mensaje indicando que no hay tareas disponibles.
+        
+        if not self.tareas:
+            return "No hay tareas disponibles"
+        return "\n".join([f"{idx}. {tarea}" for idx, tarea in enumerate(self.tareas)])
+
+
+def main():
+    
+    #Función principal que maneja la interacción del usuario con el gestor de tareas.
+    #Muestra un menú y permite agregar, eliminar, marcar como completadas y listar tareas.
+    
+    gestor = GestorTareas()
+    while True:
+        # Muestra el menú de opciones
+        print("\nOpciones:")
+        print("1. Agregar tarea")
+        print("2. Eliminar tarea")
+        print("3. Marcar tarea como completada")
+        print("4. Listar tareas")
+        print("5. Salir")
+        opcion = input("Elige una opción: ")
+
+        if opcion == '1':
+            # Agregar una nueva tarea
+            descripcion = input("Descripción de la tarea: ")
+            mensaje = gestor.agregar_tarea(descripcion)
+            print(mensaje)
+        elif opcion == '2':
+            # Eliminar una tarea existente
+            indice = int(input("Índice de la tarea a eliminar: "))
+            mensaje = gestor.eliminar_tarea(indice)
+            print(mensaje)
+        elif opcion == '3':
+            # Marcar una tarea como completada
+            indice = int(input("Índice de la tarea a marcar como completada: "))
+            mensaje = gestor.marcar_tarea_completada(indice)
+            print(mensaje)
+        elif opcion == '4':
+            # Listar todas las tareas
+            mensaje = gestor.listar_tareas()
+            print(mensaje)
+        elif opcion == '5':
+            # Salir del programa
+            break
+        else:
+            # Manejo de opción inválida
+            print("Opción inválida")
+
+if __name__ == "__main__":
+    main()
