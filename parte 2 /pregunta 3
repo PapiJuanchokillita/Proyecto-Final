@@ -1,7 +1,7 @@
 # Definimos las tasas de cambio con respecto al PEN (SOl PERUANO)
 #Diccionario
 cambio_dicc = {
-    'PEN': 1.0,    # Dólar Estadounidense
+    'PEN': 1.0,    # PEN
     'EUR': 0.24,   # Euro
     'CAD': 0.36,  # Yen Japonés
     'GBP': 0.20,   # Libra Esterlina
@@ -13,10 +13,10 @@ def conversor(cantidad, moneda_origen, moneda_destino):
     if moneda_origen not in cambio_dicc or moneda_destino not in cambio_dicc:
         raise ValueError("Moneda no soportada.")
     
-    # Convertir la cantidad a USD primero
+    # Convertir la cantidad a PENprimero
     cantidad_pen = cantidad / cambio_dicc[moneda_origen]
     
-    # Convertir de USD a la moneda destino
+    # Convertir de PEN a la moneda destino
     conversion_cantidad = cantidad_pen * cambio_dicc[moneda_destino]
     
     return conversion_cantidad
