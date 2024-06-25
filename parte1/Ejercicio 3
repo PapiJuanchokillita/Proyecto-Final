@@ -1,0 +1,14 @@
+def invertir_cadena(cadena):
+    # Usamos rebanadas de cadena para invertir la cadena
+    cadena_invertida = cadena[::-1]
+    return cadena_invertida
+
+# Solicitar al usuario que ingrese la cadena
+cadena_original = input("Ingrese una cadena para invertirla: ")
+
+# Llamar a la función para invertir la cadena ingresada por el usuario
+cadena_invertida = invertir_cadena(cadena_original)
+
+# Mostrar resultados
+print(f"Cadena original: {cadena_original}")
+print(f"Cadena invertida: {cadena_invertida}")
