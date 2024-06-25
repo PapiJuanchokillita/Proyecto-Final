@@ -1,0 +1,23 @@
+# Crear una lista inicial
+lista = [1, 2, 3, 4, 5]
+
+# Mostrar la lista original
+print("Lista original:", lista)
+
+# Modificar un elemento específico
+lista[2] = 10
+
+# Mostrar la lista después de la modificación
+print("Lista modificada:", lista)
+
+# Añadir un nuevo elemento
+lista.append(6)
+
+# Mostrar la lista después de añadir un elemento
+print("Lista después de añadir:", lista)
+
+# Eliminar un elemento
+del lista[1]
+
+# Mostrar la lista después de eliminar un elemento
+print("Lista después de eliminar:", lista)
