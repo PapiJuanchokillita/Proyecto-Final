@@ -1,7 +1,7 @@
 class Tarea:
     def __init__(self, descripcion):
     
-        #Inicializa una nueva tarea con la descripción proporcionada y la marca como no completada.
+        #Inicializa una nueva tarea con la descripcion proporcionada y la marca como no completada.
         
         self.descripcion = descripcion
         self.completada = False
@@ -14,7 +14,7 @@ class Tarea:
 
     def __str__(self):
         
-        #Devuelve una representación en cadena de la tarea, indicando si está completada o no.
+        #Devuelve una representacion en cadena de la tarea, indicando si esta completada o no.
         
         estado = "Hecha" if self.completada else "Pendiente"
         return f"{self.descripcion} - {estado}"
@@ -23,14 +23,14 @@ class Tarea:
 class GestorTareas:
     def __init__(self):
         
-        #Inicializa el gestor de tareas con una lista vacía de tareas.
+        #Inicializa el gestor de tareas con una lista vacia de tareas.
         
         self.tareas = []
 
     def agregar_tarea(self, descripcion):
         
-        #Agrega una nueva tarea con la descripción proporcionada a la lista de tareas.
-        #Devuelve un mensaje de confirmación.
+        #Agrega una nueva tarea con la descripcion proporcionada a la lista de tareas.
+        #Devuelve un mensaje de confirmacion.
     
         tarea = Tarea(descripcion)
         self.tareas.append(tarea)
@@ -38,21 +38,21 @@ class GestorTareas:
 
     def eliminar_tarea(self, indice):
         
-        #Elimina la tarea en el índice proporcionado de la lista de tareas.
-        #Devuelve un mensaje de confirmación si la operación es exitosa,
-        #o un mensaje de error si el índice es inválido.
+        #Elimina la tarea en el indice proporcionado de la lista de tareas.
+        #Devuelve un mensaje de confirmacion si la operacion es exitosa,
+        #o un mensaje de error si el indice es invalido.
         
         if 0 <= indice < len(self.tareas):
             tarea_eliminada = self.tareas.pop(indice)
             return f"Tarea eliminada con éxito: {tarea_eliminada.descripcion}"
         else:
-            return "Índice de tarea inválido"
+            return "Índice de tarea invlido"
 
     def marcar_tarea_completada(self, indice):
         
-        #Marca la tarea en el índice proporcionado como completada.
-        #Devuelve un mensaje de confirmación si la operación es exitosa,
-        #o un mensaje de error si el índice es inválido.
+        #Marca la tarea en el indice proporcionado como completada.
+        #Devuelve un mensaje de confirmacion si la operacion es exitosa,
+        #o un mensaje de error si el indice es invalido.
         
         if 0 <= indice < len(self.tareas):
             self.tareas[indice].marcar_completada()
@@ -72,8 +72,8 @@ class GestorTareas:
 
 def main():
     
-    #Función principal que maneja la interacción del usuario con el gestor de tareas.
-    #Muestra un menú y permite agregar, eliminar, marcar como completadas y listar tareas.
+    #Funcion principal que maneja la interaccion del usuario con el gestor de tareas.
+    #Muestra un menu y permite agregar, eliminar, marcar como completadas y listar tareas.
     
     gestor = GestorTareas()
     while True:
@@ -84,21 +84,21 @@ def main():
         print("3. Marcar tarea como completada")
         print("4. Listar tareas")
         print("5. Salir")
-        opcion = input("Elige una opción: ")
+        opcion = input("Elige una opcion: ")
 
         if opcion == '1':
             # Agregar una nueva tarea
-            descripcion = input("Descripción de la tarea: ")
+            descripcion = input("Descripcion de la tarea: ")
             mensaje = gestor.agregar_tarea(descripcion)
             print(mensaje)
         elif opcion == '2':
             # Eliminar una tarea existente
-            indice = int(input("Índice de la tarea a eliminar: "))
+            indice = int(input("indice de la tarea a eliminar: "))
             mensaje = gestor.eliminar_tarea(indice)
             print(mensaje)
         elif opcion == '3':
             # Marcar una tarea como completada
-            indice = int(input("Índice de la tarea a marcar como completada: "))
+            indice = int(input("indice de la tarea a marcar como completada: "))
             mensaje = gestor.marcar_tarea_completada(indice)
             print(mensaje)
         elif opcion == '4':
@@ -109,8 +109,8 @@ def main():
             # Salir del programa
             break
         else:
-            # Manejo de opción inválida
-            print("Opción inválida")
+            # Manejo de opcion invalida
+            print("Opcion invalida")
 
 if __name__ == "__main__":
     main()
