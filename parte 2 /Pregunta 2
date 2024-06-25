@@ -1,0 +1,28 @@
+import random
+
+def jugar_adivina_numero():
+    print("¡Bienvenido al juego de adivinar el número!")
+    print("Estoy pensando en un número entre 1 y 10")
+    numero_secreto = random.randint(1, 10)
+    intentos_realizados = 0
+    
+    while True:
+        intento = int(input("Intenta adivinar el número: "))
+        intentos_realizados += 1
+        
+        if intento < numero_secreto:
+            print("El número secreto es mayor. Intenta de nuevo.")
+        elif intento > numero_secreto:
+            print("El número secreto es menor. Intenta de nuevo.")
+        else:
+            print(f"Felicitaciones! ¡Adivinaste el número secreto {numero_secreto} en {intentos_realizados} intentos!")
+            break
+
+    volver_a_jugar = input("¿Quieres jugar de nuevo? (s/n): ").lower()
+    if volver_a_jugar == 's':
+        jugar_adivina_numero()
+    else:
+        print("Gracias por jugar. ¡Hasta luego!")
+
+# Iniciar el juego
+jugar_adivina_numero()
