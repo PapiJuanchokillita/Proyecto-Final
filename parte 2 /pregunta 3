@@ -1,0 +1,48 @@
+# Definimos las tasas de cambio con respecto al PEN (SOl PERUANO)
+#Diccionario
+cambio_dicc = {
+    'PEN': 1.0,    # Dólar Estadounidense
+    'EUR': 0.24,   # Euro
+    'CAD': 0.36,  # Yen Japonés
+    'GBP': 0.20,   # Libra Esterlina
+    'MXN': 4.77    # Peso Mexicano
+}
+
+def conversor(cantidad, moneda_origen, moneda_destino):
+    """Convierte una cantidad de una moneda a otra usando las tasas de cambio predefinidas."""
+    if moneda_origen not in cambio_dicc or moneda_destino not in cambio_dicc:
+        raise ValueError("Moneda no soportada.")
+    
+    # Convertir la cantidad a USD primero
+    cantidad_pen = cantidad / cambio_dicc[moneda_origen]
+    
+    # Convertir de USD a la moneda destino
+    conversion_cantidad = cantidad_pen * cambio_dicc[moneda_destino]
+    
+    return conversion_cantidad
+
+def main():
+    print("Conversor de Monedas")
+    print("Monedas soportadas: USD, EUR, JPY, GBP, MXN")
+    
+    moneda_origen = input("Introduce la moneda de origen: ").upper()
+    moneda_destino = input("Introduce la moneda de destino: ").upper()
+#aqui verificamos que el monto sea un numero    
+    while True:
+        cantidad_input = input("Introduce la cantidad a convertir: ")
+        try:
+            cantidad = float(cantidad_input)
+            break
+        except ValueError:
+            print("Error: La cantidad debe ser un número válido.")
+#
+    try:
+        resultado = conversor(cantidad, moneda_origen, moneda_destino)
+        print(f"{cantidad} {moneda_origen} son {resultado:.2f} {moneda_destino}.")
+    except ValueError as e:
+        print(e)
+
+#Esta ultima linea  asegura que la función main() 
+# se ejecute solo cuando el script se ejecuta directamente.
+if __name__ == "__main__":
+    main()
