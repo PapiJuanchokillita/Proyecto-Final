@@ -42,7 +42,7 @@ def main():
     except ValueError as e:
         print(e)
 
-#Esta ultima linea  asegura que la función main() 
+#Esta ultima linea  asegura que la funcion main() 
 # se ejecute solo cuando el script se ejecuta directamente.
 if __name__ == "__main__":
     main()
