@@ -1,0 +1,33 @@
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score
+
+# Crear un conjunto de datos simple
+data = {
+    'tenure': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    'monthlycharges': [20, 30, 40, 50, 60, 70, 80, 90, 100, 110],
+    'churn': [0, 0, 0, 1, 0, 1, 1, 0, 1, 1]
+}
+
+df = pd.DataFrame(data)
+
+# Dividir el conjunto de datos en entrenamiento y prueba
+X = df[['tenure', 'monthlycharges']]
+y = df['churn']
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+# Entrenar el modelo de regresión logística
+model = LogisticRegression()
+model.fit(X_train, y_train)
+
+# Hacer predicciones
+y_pred = model.predict(X_test)
+
+# Evaluar el modelo
+accuracy = accuracy_score(y_test, y_pred)
+print('Accuracy:', accuracy)
+
+# Mostrar las probabilidades predichas
+print('Probabilidades predichas:', model.predict_proba(X_test))
