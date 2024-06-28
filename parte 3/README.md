@@ -43,3 +43,5 @@ Puedes instalar estas dependencias utilizando `pip`:
 
 pip install pandas scikit-learn
 
+**Calificación Final: 15**
+
